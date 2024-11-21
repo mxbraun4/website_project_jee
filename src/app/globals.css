@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes diagonal-rise {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+  }
+  100% {
+    transform: translate(140%, -140%) rotate(45deg);
+  }
+}
+
+.animate-diagonal-1 {
+  animation: diagonal-rise 7s linear infinite;
+}
+
+.animate-diagonal-2 {
+  animation: diagonal-rise 8s linear infinite;
+  animation-delay: -2s;
+}
+
+.animate-diagonal-3 {
+  animation: diagonal-rise 7.5s linear infinite;
+  animation-delay: -4s;
+}
+
+.animate-diagonal-4 {
+  animation: diagonal-rise 8.5s linear infinite;
+  animation-delay: -1s;
+}
+
+.animate-diagonal-5 {
+  animation: diagonal-rise 9s linear infinite;
+  animation-delay: -3s;
+}
