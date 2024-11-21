@@ -1,83 +1,68 @@
 Setup and Deployment Guide
 
 1. Prerequisites
-Ensure the following are installed on your system:
-Node.js (version X.X.X or higher)
-Git
-NPM (comes with Node.js)
-Any additional tools or frameworks (e.g., Next.js, Strapi)
+Node.js (version 18 or higher | https://nodejs.org/en)
+Git (https://git-scm.com/downloads)
+Strapi CLI (npm install -g @strapi/strapi)
 
 
-2. Clone the Repository
-Run the following command to clone the repository:
-bash
-Copy code
-git clone https://github.com/mxbraun4/website_project_jee.git
-Navigate into the project directory:
-bash
-Copy code
-cd website_project_jee
+2. Frontend Setup
+Clone Projec (git clone https://github.com/mxbraun4/website_project_jee.git)
+Change directory (cd website_project_jee)
+Install the required packages (npm install)
+Start development server (npm run dev)
+Site will be availible at http://localhost:3000/
 
 
-3. Install Dependencies
-Install the required packages using:
-bash
-Copy code
-npm install
+3. Backend Setup (Strapi)
+Go to Strapi directory (cd my-strapi-project)
+Install dependencies (npm install)
+Start Strapi (npm run develop)
+
+Info
+Strapi admin panel will be at http://localhost:1337/admin
+The Strapi admin panel will fetch for articles and display them on the events page of the frontend
+The backend is configured to serve articles as shown in:
+async function importSeedData() {
+  // Allow read of application content types
+  await setPublicPermissions({
+    article: ['find', 'findOne'],
+    category: ['find', 'findOne'],
+    author: ['find', 'findOne'],
+    global: ['find', 'findOne'],
+    about: ['find', 'findOne'],
+  });
 
 
-(4. Configuration
-Set up environment variables:
-Create a .env.local file in the root directory.
-Add the required environment variables (replace placeholders with actual values):
-makefile
-Copy code
-API_URL=<your-api-url>
-DATABASE_URL=<your-database-url>)
 
 
-5. Local Development
-Run the project locally:
-bash
-Copy code
-npm run dev
-Access the application at http://localhost:3000.
+Deployment
+1. Deploy Frontend (Next.js)
+Using Vercel (Easiest Option)
+Create account at vercel.com
+Install Vercel CLI (npm install -g vercel)
+Deploy (vercel)
+
+2. Deploy Strapi Backend
+Using Railway (Simple Option)
+Create account at railway.app
+2. Connect your GitHub repository
+Add environment variables:
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=your-keys-here
+API_TOKEN_SALT=your-salt-here
+ADMIN_JWT_SECRET=your-secret-here
+JWT_SECRET=your-secret-here
+
+3. Connect Frontend to Backend
+Update your frontend's .env file with your deployed Strapi URL:
+NEXT_PUBLIC_STRAPI_API_URL=https://your-strapi-url.com
 
 
-6. Deployment
-To Deploy to [Your Hosting Provider]:
-Build the Project:
-bash
-Copy code
-npm run build
-Start the Server (for production):
-bash
-Copy code
-npm start
-Host-Specific Steps:
-For Vercel: Push changes to the main branch; deployment is automatic.
-For Netlify: Configure build settings in the Netlify dashboard.
-Optional - Using Docker:
-Build the Docker image:
-bash
-Copy code
-docker build -t my-website .
-Run the container:
-bash
-Copy code
-docker run -p 3000:3000 my-website
 
 
-7. Troubleshooting
+Troubleshooting
 Dependencies Not Installing: Ensure Node.js and NPM are installed and updated.
-Environment Variables Missing: Double-check .env.local values.
-Server Crashing: Check logs for specific errors:
-bash
-Copy code
-npm run dev
-
-
-8. Additional Notes
-Add documentation for any frameworks (e.g., Next.js, Tailwind).
-Mention CI/CD tools (e.g., GitHub Actions) if used.
-
+Node.js documentation: https://nodejs.org/docs/latest/api/
+Strapi documentation: https://docs.strapi.io/dev-docs/intro
