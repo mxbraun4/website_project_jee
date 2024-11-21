@@ -1,12 +1,12 @@
 Setup and Deployment Guide
 
-1. Prerequisites
+1. Prerequisites:
 Node.js (version 18 or higher | https://nodejs.org/en)
 Git (https://git-scm.com/downloads)
 Strapi CLI (npm install -g @strapi/strapi)
 
 
-2. Frontend Setup
+2. Frontend Setup:
 Clone Projec (git clone https://github.com/mxbraun4/website_project_jee.git)
 Change directory (cd website_project_jee)
 Install the required packages (npm install)
@@ -14,12 +14,12 @@ Start development server (npm run dev)
 Site will be availible at http://localhost:3000/
 
 
-3. Backend Setup (Strapi)
+3. Backend Setup (Strapi):
 Go to Strapi directory (cd my-strapi-project)
 Install dependencies (npm install)
 Start Strapi (npm run develop)
 
-Info
+Info:
 Strapi admin panel will be at http://localhost:1337/admin
 The Strapi admin panel will fetch for articles and display them on the events page of the frontend
 The backend is configured to serve articles as shown in:
@@ -36,7 +36,7 @@ async function importSeedData() {
 
 
 
-Deployment
+Deployment:
 1. Deploy Frontend (Next.js)
 Using Vercel (Easiest Option)
 Create account at vercel.com
@@ -62,7 +62,7 @@ NEXT_PUBLIC_STRAPI_API_URL=https://your-strapi-url.com
 
 
 
-Troubleshooting
+Troubleshooting:
 Dependencies Not Installing: Ensure Node.js and NPM are installed and updated.
 Node.js documentation: https://nodejs.org/docs/latest/api/
 Strapi documentation: https://docs.strapi.io/dev-docs/intro
